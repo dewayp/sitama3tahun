@@ -231,12 +231,16 @@ function preloadImages() {
     for (let i = 1; i <= 15; i++) {
         srcs.push(`assets/images/couple/photo_${String(i).padStart(2, '0')}.jpg`);
         srcs.push(`assets/images/couple/photo_${String(i).padStart(2, '0')}.jpeg`);
+        srcs.push(`assets/images/couple/photo_${String(i).padStart(2, '0')}.JPG`);
     }
     srcs.push('assets/images/memories/mem_2023_01.jpg');
     srcs.push('assets/images/memories/mem_2023_01.jpeg');
+    srcs.push('assets/images/memories/mem_2023_01.JPG');
     srcs.push('assets/images/memories/mem_2024_01.jpg');
     srcs.push('assets/images/memories/mem_2024_01.jpeg');
+    srcs.push('assets/images/memories/mem_2024_01.JPG');
     srcs.push('assets/images/memories/mem_2025_01.jpg');
     srcs.push('assets/images/memories/mem_2025_01.jpeg');
+    srcs.push('assets/images/memories/mem_2025_01.JPG');
     srcs.forEach(src => { const img = new Image(); img.src = src; });
 }
