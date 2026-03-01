@@ -218,7 +218,7 @@ function initGame2() {
         card.dataset.year = data.year;
         const svgPlaceholder = `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2290%22 height=%22120%22><rect fill=%22%23FF6B9D22%22 width=%2290%22 height=%22120%22/><text x=%2245%22 y=%2270%22 font-size=%2213%22 fill=%22%23FF6B9D%22 text-anchor=%22middle%22>${data.year}</text></svg>`;
         card.innerHTML = `
-      <img src="${data.baseSrc}.jpg" alt="${data.year}" onerror="if(!this.dataset.tried){this.dataset.tried='1'; this.src='${data.baseSrc}.jpeg';} else {this.src='${svgPlaceholder}';}" />
+      <img src="${data.baseSrc}.jpg" alt="${data.year}" onerror="if(!this.dataset.tried){this.dataset.tried='1'; this.src='${data.baseSrc}.jpeg';} else if(this.dataset.tried==='1'){this.dataset.tried='2'; this.src='${data.baseSrc}.JPG';} else {this.src='${svgPlaceholder}';}" />
       <div class="card-year-hint"></div>
     `;
         setupDrag(card);
