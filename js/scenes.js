@@ -336,7 +336,7 @@ async function startPhotoExplosion() {
             --roty-end:${rotYEnd}deg;
             animation:photoFall ${fallDur}s ease-in-out both;
         `;
-        el.innerHTML = `<img src="${photos[i]}.jpg" onerror="if(!this.dataset.tried){this.dataset.tried='1'; this.src='${photos[i]}.jpeg';} else {this.src='${placeholders[i]}';}"/>`;
+        el.innerHTML = `<img src="${photos[i]}.jpg" onerror="if(!this.dataset.tried){this.dataset.tried='1'; this.src='${photos[i]}.jpeg';} else if(this.dataset.tried==='1'){this.dataset.tried='2'; this.src='${photos[i]}.JPG';} else {this.src='${placeholders[i]}';}"/>`;
         container.appendChild(el);
 
         // Hapus setelah animasi selesai
