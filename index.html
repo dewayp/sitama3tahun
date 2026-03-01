@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#1a0812" />
+  <title>💕 3 Tahun Bersama</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <div id="app">
+
+    <!-- ═══════════════════════════════════
+       SCENE 0 – INTRO
+  ════════════════════════════════════ -->
+    <section class="scene active" id="scene-0">
+      <div class="intro-hearts" id="intro-hearts"></div>
+      <div class="particles" id="intro-particles"></div>
+      <div class="intro-content stagger-children">
+        <div class="intro-title">💕 Happy Anniversary</div>
+        <div class="intro-subtitle">1 Maret 2026</div>
+        <div class="anniv-badge">✨ 3 Tahun Bersama ✨</div>
+        <button class="btn-start" id="btn-mulai" onclick="startJourney()">
+          Mulai &nbsp;🌸
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       SCENE 1 – PHONE HOMESCREEN
+  ════════════════════════════════════ -->
+    <section class="scene" id="scene-1">
+      <div class="phone-screen">
+        <!-- Status bar -->
+        <div class="status-bar">
+          <span class="status-time" id="phone-time">09:00</span>
+          <div class="status-icons">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3c-1.65-1.66-4.34-1.66-6 0zm-4-4l2 2c2.76-2.76 7.24-2.76 10 0l2-2C15.14 9.14 8.87 9.14 5 13z" />
+            </svg>
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z" />
+            </svg>
+          </div>
+        </div>
+
+        <!-- Clock -->
+        <div class="phone-clock fade-in">
+          <div class="phone-clock-time" id="phone-clock-time">09:02</div>
+          <div class="phone-clock-date">Minggu, 1 Maret 2026</div>
+        </div>
+
+        <!-- App icons -->
+        <div class="home-icons">
+          <div class="home-icon">
+            <div class="home-icon-img" style="background:linear-gradient(135deg,#667eea,#764ba2)">📷</div>
+            <span class="home-icon-label">Camera</span>
+          </div>
+          <div class="home-icon">
+            <div class="home-icon-img" style="background:linear-gradient(135deg,#f093fb,#f5576c)">🎵</div>
+            <span class="home-icon-label">Music</span>
+          </div>
+          <div class="home-icon">
+            <div class="home-icon-img" style="background:linear-gradient(135deg,#4facfe,#00f2fe)">🗺️</div>
+            <span class="home-icon-label">Maps</span>
+          </div>
+          <div class="home-icon">
+            <div class="home-icon-img" style="background:linear-gradient(135deg,#43e97b,#38f9d7)">📅</div>
+            <span class="home-icon-label">Calendar</span>
+          </div>
+          <div class="home-icon">
+            <div class="home-icon-img" style="background:linear-gradient(135deg,#fa709a,#fee140)">📸</div>
+            <span class="home-icon-label">Gallery</span>
+          </div>
+          <div class="home-icon">
+            <div class="home-icon-img" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb)">🎬</div>
+            <span class="home-icon-label">Video</span>
+          </div>
+          <div class="home-icon">
+            <div class="home-icon-img" style="background:linear-gradient(135deg,#fccb90,#d57eeb)">🛒</div>
+            <span class="home-icon-label">Shop</span>
+          </div>
+          <div class="home-icon">
+            <div class="home-icon-img" style="background:linear-gradient(135deg,#fddb92,#d1fdff)">⚙️</div>
+            <span class="home-icon-label">Settings</span>
+          </div>
+        </div>
+
+        <!-- Dock -->
+        <div class="phone-dock">
+          <div class="dock-icon" style="background:linear-gradient(135deg,#25D366,#128C7E)">📱</div>
+          <div class="dock-icon" style="background:linear-gradient(135deg,#667eea,#764ba2)">🌐</div>
+          <div class="dock-icon" style="background:linear-gradient(135deg,#f093fb,#f5576c)">✉️</div>
+          <div class="dock-icon" style="background:linear-gradient(135deg,#2AABEE,#1A8FD1)" id="tg-dock-icon">✈️</div>
+        </div>
+
+        <!-- Telegram notification -->
+        <div class="tg-notification" id="tg-notif" onclick="handleNotifClick()">
+          <div class="notif-icon">✈️</div>
+          <div class="notif-body">
+            <div class="notif-app">TELEGRAM</div>
+            <div class="notif-sender">Sita</div>
+            <div class="notif-msg">Dari jawa?</div>
+          </div>
+          <div class="notif-time">skrg</div>
+        </div>
+
+        <!-- Tutorial overlay -->
+        <div class="tutorial-overlay" id="tutorial-overlay" onclick="handleNotifClick()">
+          <div class="spotlight"></div>
+          <div class="tutorial-arrow">
+            <svg viewBox="0 0 24 24">
+              <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z" />
+            </svg>
+            <p>Klik notifikasinya ya 💕</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       SCENE 1B – TELEGRAM CHAT
+  ════════════════════════════════════ -->
+    <section class="scene" id="scene-tg">
+      <!-- Telegram Header -->
+      <div class="tg-header">
+        <div class="tg-back">‹</div>
+        <div class="tg-avatar">S</div>
+        <div class="tg-info">
+          <div class="tg-name">Sita</div>
+          <div class="tg-status" id="tg-status-text">last seen recently</div>
+        </div>
+        <div class="tg-actions">
+          <span>🔍</span>
+          <span>⋮</span>
+        </div>
+      </div>
+
+      <!-- Messages area -->
+      <div class="tg-messages" id="tg-messages">
+        <div class="tg-date-sep"><span>1 Maret 2023</span></div>
+
+        <!-- Incoming: "Dari jawa?" -->
+        <div class="bubble-wrap incoming" id="bubble-in" style="opacity:1; transform:translateY(0)">
+          <div class="bubble in">
+            Dari jawa?
+            <div class="bubble-meta">
+              <span class="bubble-time">09:01</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Typing: saya mengetik sebelum "iyaa" -->
+        <div class="bubble-wrap incoming" id="typing-wrap" style="opacity:0;transform:translateY(12px)">
+          <div class="typing-bubble" id="typing-bubble">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+          </div>
+        </div>
+
+        <!-- Outgoing: "iyaa" -->
+        <div class="bubble-wrap outgoing" id="bubble-out" style="opacity:0;transform:translateY(12px)">
+          <div class="bubble out">
+            iyaa
+            <div class="bubble-meta">
+              <span class="bubble-time">09:02</span>
+              <span class="bubble-check">✓✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flow overlay inside chat -->
+      <div class="flow-overlay" id="flow-overlay">
+        <div class="flow-text" id="flow-text">
+          Dari satu pesan itu…<br>ternyata lahir ribuan cerita.
+        </div>
+      </div>
+
+      <!-- Input bar -->
+      <div class="tg-input-bar">
+        <span class="tg-input-icon">📎</span>
+        <div class="tg-input-field">Write a message…</div>
+        <span class="tg-input-icon">🎤</span>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       SCENE 3 – WAIT
+  ════════════════════════════════════ -->
+    <section class="scene" id="scene-wait">
+      <div class="wait-photo-bg" id="wait-photo-bg">
+        <img src="assets/images/couple/photo_01.jpg" alt="" onerror="this.parentNode.style.display='none'" />
+      </div>
+      <div class="wait-overlay"></div>
+      <div class="wait-content stagger-children">
+        <div class="wait-title">Wait…<br>jangan buru-buru.</div>
+        <div class="wait-subtitle">Mari kita nikmati perjalanan ini dulu.</div>
+        <button class="btn-primary" onclick="showScene('scene-game1'); startGame1()">
+          ❤️ &nbsp;Siap
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       GAME 1 – TANGKAP HATI
+  ════════════════════════════════════ -->
+    <section class="scene" id="scene-game1">
+      <div class="game1-header">
+        <div class="game1-title">💕 Tangkap Hatinya!</div>
+        <div class="game1-counter" id="game1-counter">0 / 7</div>
+      </div>
+
+      <div class="game1-arena" id="game1-arena">
+        <!-- Hearts generated by JS -->
+      </div>
+
+      <div class="game1-complete" id="game1-complete">
+        <div style="font-size:4rem">💘</div>
+        <div class="game1-complete-text">
+          "Saya emang selalu berhasil<br>menangkap hatimu."
+        </div>
+        <button class="btn-primary" style="max-width:220px" onclick="showScene('scene-game2'); initGame2()">
+          Lanjut ➡
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       GAME 2 – DRAG & DROP
+  ════════════════════════════════════ -->
+    <section class="scene" id="scene-game2">
+      <div class="game2-title">📸 Drag Kenangan</div>
+      <div class="game2-subtitle">Letakkan foto ke tahunnya yang tepat</div>
+
+      <div class="game2-drop-zone">
+        <div class="year-box" id="box-2023" data-year="2023">
+          <span class="year-label">2023</span>
+        </div>
+        <div class="year-box" id="box-2024" data-year="2024">
+          <span class="year-label">2024</span>
+        </div>
+        <div class="year-box" id="box-2025" data-year="2025">
+          <span class="year-label">2025</span>
+        </div>
+      </div>
+
+      <div class="game2-cards" id="game2-cards">
+        <!-- Cards generated by JS -->
+      </div>
+
+      <div class="game2-wrong-msg" id="g2-wrong-msg"></div>
+
+      <!-- 2026 Reveal inside Game 2 -->
+      <div class="game2-reveal" id="game2-reveal"
+        style="opacity:0; transform:translateY(30px) scale(0.9); pointer-events:none; transition:all 1s cubic-bezier(0.4, 0, 0.2, 1); margin-top:24px; text-align:center;">
+        <div style="font-family:var(--font-display);font-size:1.5rem;color:var(--pink-light);margin-bottom:12px;">
+          Perjalanan Kita Berlanjut...</div>
+        <div class="year-frame frame-2026" style="margin:0 auto; width:130px; height:170px;">
+          <div class="sparkle-container" id="sparkle-container">
+            <span class="sparkle" style="top:20%;left:20%;animation-delay:0s">✨</span>
+            <span class="sparkle" style="top:50%;left:50%;animation-delay:0.5s">💕</span>
+            <span class="sparkle" style="top:70%;left:25%;animation-delay:1s">✨</span>
+            <span class="sparkle" style="top:30%;left:75%;animation-delay:1.5s">🌸</span>
+            <span class="sparkle" style="top:75%;left:70%;animation-delay:0.8s">✨</span>
+          </div>
+          <div style="font-size:3rem;z-index:2">💍</div>
+          <div class="frame-label" style="font-size:1.1rem;color:var(--pink-primary);font-weight:700;">2026</div>
+        </div>
+        <div style="font-size:0.9rem;color:var(--text-light);margin-top:16px;text-shadow:0 1px 4px rgba(0,0,0,0.5);">
+          Mari kita isi dengan kisah yang baik. 💕</div>
+      </div>
+    </section>
+
+
+    <!-- ═══════════════════════════════════
+       SCENE – MAAF
+  ════════════════════════════════════ -->
+    <section class="scene" id="scene-maaf">
+      <div class="maaf-title" id="maaf-title" style="opacity:0">MAAF</div>
+      <div id="apology-container" style="position:absolute;inset:0;pointer-events:none;"></div>
+      <div class="maaf-pray" id="maaf-pray">🙏</div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       SCENE – TALI
+  ════════════════════════════════════ -->
+    <section class="scene" id="scene-tali">
+      <!-- Rope hangs from the very top with extra hidden length to prevent detaching -->
+      <div class="rope-container" id="rope-container"
+        style="position:absolute; top:-600px; left:50%; margin-left:-30px;">
+        <svg class="rope-svg" width="60" height="860" viewBox="0 -600 60 860" fill="none"
+          xmlns="http://www.w3.org/2000/svg">
+          <!-- Braided rope effect -->
+          <defs>
+            <linearGradient id="ropeGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#c8875a" />
+              <stop offset="50%" stop-color="#e8a575" />
+              <stop offset="100%" stop-color="#a0623a" />
+            </linearGradient>
+          </defs>
+          <!-- Rope body segments (braided look) -->
+          <path
+            d="M30 -600 L30 0 C 25 20, 35 40, 30 60 C 25 80, 35 100, 30 120 C 25 140, 35 160, 30 180 C 25 200, 35 220, 30 240"
+            stroke="url(#ropeGrad)" stroke-width="8" stroke-linecap="round" fill="none" />
+          <path
+            d="M30 -600 L30 0 C 35 20, 25 40, 30 60 C 35 80, 25 100, 30 120 C 35 140, 25 160, 30 180 C 35 200, 25 220, 30 240"
+            stroke="#b87448" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.6" />
+          <!-- Tassel at bottom -->
+          <circle cx="30" cy="248" r="8" fill="url(#ropeGrad)" />
+          <line x1="24" y1="256" x2="20" y2="270" stroke="#c8875a" stroke-width="2.5" stroke-linecap="round" />
+          <line x1="28" y1="256" x2="27" y2="272" stroke="#c8875a" stroke-width="2.5" stroke-linecap="round" />
+          <line x1="32" y1="256" x2="33" y2="272" stroke="#c8875a" stroke-width="2.5" stroke-linecap="round" />
+          <line x1="36" y1="256" x2="40" y2="270" stroke="#c8875a" stroke-width="2.5" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <!-- Text placed below rope center -->
+      <div style="position:absolute; top:320px; width:100%; text-align:center;">
+        <div style="font-family:var(--font-display);font-size:1.3rem;color:var(--text-muted);margin-bottom:20px;">
+        </div>
+        <div class="tali-text">
+          <div style="font-size:1rem;color:var(--pink-light);font-weight:600">Tarik aku.</div>
+          <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px">↕ swipe ke bawah</div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════
+       SCENE – LEDAKAN FOTO
+  ════════════════════════════════════ -->
+    <section class="scene" id="scene-photos">
+      <div class="photo-vignette"></div>
+      <div id="photos-container" style="position:absolute;inset:0;pointer-events:none;perspective:800px;"></div>
+
+      <div class="photos-text" id="photos-text">
+        Terima kasih sudah menciptakan semua ini. 💕
+      </div>
+
+      <div style="position:absolute;bottom:40px;left:24px;right:24px;z-index:20;opacity:0;transition:opacity 0.8s ease"
+        id="photos-btn">
+        <button class="btn-primary" onclick="photoLoopRunning=false; showScene('scene-letter'); initLetter()">
+          Masih ada satu hal lagi… ➡
+        </button>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       SCENE – SURAT (FINALE)
+  ════════════════════════════════════ -->
+    <section class="scene" id="scene-letter">
+      <!-- Background collage -->
+      <div class="letter-bg-collage" id="letter-collage"></div>
+      <div class="letter-bg-overlay"></div>
+
+      <!-- Envelope scene -->
+      <div class="envelope-scene" id="envelope-scene" style="position:relative;z-index:5">
+        <div class="envelope-title">💌 Satu surat untukmu.</div>
+
+        <div class="envelope-wrapper" id="envelope-wrapper" onclick="openEnvelope()">
+          <div class="envelope-body" id="envelope-body">
+            <div class="envelope-flap" id="envelope-flap"></div>
+            <div class="envelope-seal">💕</div>
+          </div>
+        </div>
+
+        <div class="envelope-hint">Klik untuk membuka 💕</div>
+      </div>
+
+      <!-- Letter content (hidden initially) -->
+      <div class="letter-content" id="letter-content">
+        <div style="padding:16px 20px 8px;flex-shrink:0;display:flex;align-items:center;gap:8px;">
+          <div style="font-family:var(--font-display);font-size:1.2rem;color:var(--pink-primary)">💌 Surat Untukmu</div>
+        </div>
+        <div class="letter-paper">
+          <div class="letter-text" id="letter-text"></div>
+          <span class="letter-cursor" id="letter-cursor"></span>
+        </div>
+        <div class="letter-actions">
+          <button class="btn-primary" onclick="replyLetter()" id="btn-reply"
+            style="opacity:0;transition:opacity 0.5s ease;pointer-events:none;">
+            ❤️ &nbsp;Balas surat ini
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════
+       REDIRECT OVERLAY
+  ════════════════════════════════════ -->
+    <div class="redirect-overlay" id="redirect-overlay">
+      <div style="font-size:3rem">📱</div>
+      <div class="redirect-text" id="redirect-text">Membawamu ke WhatsApp orang paling ganteng…</div>
+      <div class="redirect-spinner"></div>
+    </div>
+
+  </div><!-- #app -->
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/scenes.js"></script>
+  <script src="js/games.js"></script>
+</body>
+
+</html>

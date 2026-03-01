@@ -1,0 +1,1878 @@
+/* =============================================
+   ANNIVERSARY WEBSITE – STYLE.CSS
+   Theme: Pink, Warm, Romantic
+   Font: Quicksand + Dancing Script
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+  --pink-primary: #FF6B9D;
+  --pink-light: #FFB3D1;
+  --pink-soft: #FFD6E7;
+  --pink-dark: #C73B6B;
+  --pink-deep: #8B0040;
+  --pink-bg: #1a0812;
+  --pink-card: rgba(255, 107, 157, 0.12);
+  --text-light: #fff8fa;
+  --text-muted: rgba(255, 255, 255, 0.65);
+  --shadow-pink: 0 0 30px rgba(255, 107, 157, 0.4);
+  --glow-pink: 0 0 60px rgba(255, 107, 157, 0.6);
+  --font-display: 'Dancing Script', cursive;
+  --font-body: 'Quicksand', sans-serif;
+  --transition-smooth: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--pink-bg);
+  font-family: var(--font-body);
+  color: var(--text-light);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+body {
+  position: fixed;
+  inset: 0;
+}
+
+/* ── Scene container ── */
+#app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  max-width: 430px;
+  margin: 0 auto;
+  background: var(--pink-bg);
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease;
+  overflow: hidden;
+}
+
+.scene.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ── Keyframe Animations ── */
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  33% {
+    transform: translateY(-12px) rotate(1deg);
+  }
+
+  66% {
+    transform: translateY(-6px) rotate(-1deg);
+  }
+}
+
+@keyframes floatHeart {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100vh) scale(0.5);
+    opacity: 0;
+  }
+}
+
+@keyframes heartbeat {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.15);
+  }
+
+  60% {
+    transform: scale(0.95);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(255, 107, 157, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 50px rgba(255, 107, 157, 0.9), 0 0 80px rgba(255, 107, 157, 0.4);
+  }
+}
+
+@keyframes sparkle {
+
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes ropeSwing {
+
+  0%,
+  100% {
+    transform: rotate(-8deg);
+    transform-origin: top center;
+  }
+
+  50% {
+    transform: rotate(8deg);
+    transform-origin: top center;
+  }
+}
+
+@keyframes photoFall {
+  from {
+    transform: translateY(-120vh) rotateZ(var(--rot)) rotateY(var(--roty));
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(110vh) rotateZ(var(--rot-end)) rotateY(var(--roty-end));
+    opacity: 0;
+  }
+}
+
+@keyframes apologyFall {
+  from {
+    transform: translateY(-60px);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  to {
+    transform: translateY(calc(100vh + 60px));
+    opacity: 0;
+  }
+}
+
+@keyframes envelopePop {
+  0% {
+    transform: translateY(40px) scale(0.8) rotateY(0deg);
+    opacity: 0;
+  }
+
+  60% {
+    transform: translateY(-10px) scale(1.05) rotateY(-5deg);
+    opacity: 1;
+  }
+
+  80% {
+    transform: translateY(4px) scale(0.98);
+  }
+
+  100% {
+    transform: translateY(0) scale(1) rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes envelopeOpen {
+  from {
+    transform: rotateX(0deg);
+  }
+
+  to {
+    transform: rotateX(-150deg);
+  }
+}
+
+@keyframes letterReveal {
+  from {
+    transform: translateY(20px) scale(0.98);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes notifSlide {
+  from {
+    transform: translateX(-120%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes arrowBounce {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glowPulse {
+
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes particleExplode {
+  0% {
+    transform: translate(0, 0) scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translate(var(--tx), var(--ty)) scale(0);
+    opacity: 0;
+  }
+}
+
+@keyframes ripple {
+  from {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+
+  to {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+@keyframes tiaiOpen {
+  from {
+    clip-path: inset(0 0 0 0);
+  }
+
+  to {
+    clip-path: inset(0 0 100% 0);
+  }
+}
+
+/* ========================================
+   SCENE 0 – INTRO
+   ======================================== */
+#scene-0 {
+  background: radial-gradient(ellipse at 40% 30%, #3d0a1e 0%, #1a0812 60%, #0d0508 100%);
+}
+
+#scene-0 .particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+#scene-0 .particle {
+  position: absolute;
+  border-radius: 50%;
+  background: var(--pink-primary);
+  animation: float calc(3s + var(--d)) ease-in-out infinite;
+  opacity: 0.15;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 40px 30px;
+}
+
+.intro-title {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  color: var(--pink-light);
+  text-shadow: 0 0 40px rgba(255, 107, 157, 0.8);
+  margin-bottom: 8px;
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+.intro-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  margin-bottom: 12px;
+}
+
+.anniv-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--pink-dark), var(--pink-primary));
+  color: white;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.1em;
+  margin-bottom: 50px;
+  box-shadow: var(--shadow-pink);
+}
+
+.btn-start {
+  background: linear-gradient(135deg, var(--pink-primary), var(--pink-dark));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 18px 50px;
+  font-size: 1.1rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 32px rgba(199, 59, 107, 0.5);
+  animation: pulse-glow 2s ease-in-out infinite;
+  transition: transform 0.15s ease;
+  letter-spacing: 0.05em;
+}
+
+.btn-start:active {
+  transform: scale(0.95);
+}
+
+.intro-hearts {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ========================================
+   SCENE 1 – PHONE HOMESCREEN
+   ======================================== */
+#scene-1 {
+  background: #000;
+  padding: 0;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(160deg, #1a0a2e 0%, #2d0b3e 40%, #0f0820 80%, #180f28 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Wallpaper overlay */
+.phone-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(180, 80, 220, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 70%, rgba(255, 80, 150, 0.2) 0%, transparent 50%);
+}
+
+/* Status bar */
+.status-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 10;
+}
+
+.status-time {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+}
+
+.status-icons {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.status-icons svg {
+  width: 16px;
+  height: 16px;
+  fill: white;
+}
+
+/* Clock display */
+.phone-clock {
+  position: absolute;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+.phone-clock-time {
+  font-size: 4.5rem;
+  font-weight: 300;
+  color: white;
+  letter-spacing: -2px;
+  line-height: 1;
+}
+
+.phone-clock-date {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 4px;
+}
+
+/* App icons on homescreen */
+.home-icons {
+  position: absolute;
+  bottom: 120px;
+  left: 0;
+  right: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 0 30px;
+}
+
+.home-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.home-icon-img {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+}
+
+.home-icon-label {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-align: center;
+}
+
+/* Dock */
+.phone-dock {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 12px 0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dock-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+/* Telegram Notification */
+.tg-notification {
+  position: absolute;
+  top: 60px;
+  left: 14px;
+  right: 14px;
+  background: rgba(24, 24, 24, 0.88);
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  z-index: 20;
+  transform: translateX(-120%);
+  opacity: 0;
+  transition: none;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.tg-notification.slide-in {
+  animation: notifSlide 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.notif-icon {
+  width: 36px;
+  height: 36px;
+  background: #2AABEE;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.notif-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.notif-app {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.08em;
+  margin-bottom: 2px;
+}
+
+.notif-sender {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 2px;
+}
+
+.notif-msg {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.notif-time {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.4);
+  white-space: nowrap;
+}
+
+/* Tutorial spotlight */
+.tutorial-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 19;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.tutorial-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.spotlight {
+  position: absolute;
+  top: 50px;
+  left: 10px;
+  right: 10px;
+  height: 80px;
+  border-radius: 20px;
+  box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.82);
+}
+
+.tutorial-arrow {
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  color: white;
+}
+
+.tutorial-arrow svg {
+  width: 36px;
+  height: 36px;
+  fill: var(--pink-primary);
+  animation: arrowBounce 1s ease-in-out infinite;
+}
+
+.tutorial-arrow p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  margin-top: 8px;
+}
+
+/* ========================================
+   SCENE 1B – TELEGRAM CHAT
+   ======================================== */
+#scene-tg {
+  background: #17212B;
+  padding: 0;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+/* Telegram Header */
+.tg-header {
+  width: 100%;
+  background: #17212B;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  padding-top: 52px;
+  flex-shrink: 0;
+  z-index: 5;
+  position: relative;
+}
+
+.tg-back {
+  color: #2AABEE;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.tg-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FF6B9D, #C73B6B);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.tg-info {
+  flex: 1;
+}
+
+.tg-name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: white;
+  line-height: 1.2;
+}
+
+.tg-status {
+  font-size: 0.72rem;
+  color: #7CB2D4;
+  line-height: 1.2;
+}
+
+.tg-actions {
+  display: flex;
+  gap: 16px;
+  color: #7CB2D4;
+  font-size: 1.3rem;
+}
+
+/* Chat messages area */
+.tg-messages {
+  flex: 1;
+  width: 100%;
+  overflow-y: auto;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 4px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  position: relative;
+}
+
+.tg-messages::-webkit-scrollbar {
+  display: none;
+}
+
+/* Date separator */
+.tg-date-sep {
+  text-align: center;
+  margin: 8px 0;
+}
+
+.tg-date-sep span {
+  background: rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.7rem;
+  padding: 4px 12px;
+  border-radius: 10px;
+}
+
+/* Bubble wrapper */
+.bubble-wrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 2px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.bubble-wrap.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bubble-wrap.incoming {
+  align-items: flex-start;
+}
+
+.bubble-wrap.outgoing {
+  align-items: flex-end;
+}
+
+.bubble {
+  max-width: 72%;
+  padding: 8px 11px;
+  border-radius: 14px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  position: relative;
+  word-break: break-word;
+}
+
+.bubble.in {
+  background: #182533;
+  color: white;
+  border-bottom-left-radius: 4px;
+}
+
+.bubble.out {
+  background: #2B5278;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.bubble-meta {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: 4px;
+  justify-content: flex-end;
+  white-space: nowrap;
+}
+
+.bubble-time {
+  font-size: 0.62rem;
+  color: rgba(255, 255, 255, 0.45);
+  display: inline;
+  white-space: nowrap;
+}
+
+.bubble-check {
+  font-size: 0.65rem;
+  color: #4FC3F7;
+  white-space: nowrap;
+}
+
+/* Typing indicator */
+.typing-bubble {
+  background: #182533;
+  border-radius: 14px;
+  border-bottom-left-radius: 4px;
+  padding: 10px 14px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  width: fit-content;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.typing-bubble.visible {
+  opacity: 1;
+}
+
+.typing-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  animation: typingBounce 1.2s ease-in-out infinite;
+}
+
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingBounce {
+
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+
+  30% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
+}
+
+/* Input bar */
+.tg-input-bar {
+  width: 100%;
+  background: #17212B;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  flex-shrink: 0;
+}
+
+.tg-input-field {
+  flex: 1;
+  background: #242F3D;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 16px;
+  color: rgba(255, 255, 255, 0.6);
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  outline: none;
+  pointer-events: none;
+}
+
+.tg-input-icon {
+  color: #7CB2D4;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* Flow overlay (inside chat) */
+.flow-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+.flow-overlay.active {
+  opacity: 1;
+}
+
+.flow-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 20%, rgba(23, 33, 43, 0.6) 60%, rgba(23, 33, 43, 0.9) 100%);
+}
+
+.flow-photo {
+  position: absolute;
+  border-radius: 8px;
+  overflow: hidden;
+  opacity: 0.25;
+  animation: float 4s ease-in-out infinite;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.flow-heart {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: floatHeart 3s ease-in-out infinite;
+  opacity: 0;
+}
+
+.flow-text {
+  position: relative;
+  z-index: 2;
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: white;
+  text-align: center;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+  padding: 0 30px;
+  line-height: 1.4;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.flow-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   SCENE 3 – WAIT
+   ======================================== */
+#scene-wait {
+  background: radial-gradient(ellipse at center, #2d0818 0%, #120308 100%);
+}
+
+.wait-photo-bg {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 5s ease-in-out infinite;
+}
+
+.wait-photo-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.12;
+  filter: blur(8px);
+}
+
+.wait-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(18, 3, 8, 0.6) 0%, rgba(18, 3, 8, 0.85) 100%);
+}
+
+.wait-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.wait-title {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  color: white;
+  line-height: 1.2;
+  text-shadow: 0 2px 20px rgba(255, 107, 157, 0.4);
+}
+
+.wait-subtitle {
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ========================================
+   SCENE – GAME 1 (Tangkap Hati)
+   ======================================== */
+#scene-game1 {
+  background: radial-gradient(ellipse at 50% 0%, #3a0a20 0%, #1a0812 60%);
+}
+
+.game1-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 50px 24px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+}
+
+.game1-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--pink-light);
+}
+
+.game1-counter {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--pink-primary);
+  background: rgba(255, 107, 157, 0.15);
+  border: 1px solid rgba(255, 107, 157, 0.3);
+  border-radius: 20px;
+  padding: 6px 16px;
+}
+
+.game1-arena {
+  position: absolute;
+  inset: 0;
+  top: 100px;
+}
+
+.flying-heart {
+  position: absolute;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.1s ease;
+  filter: drop-shadow(0 0 8px rgba(255, 107, 157, 0.6));
+  z-index: 5;
+  line-height: 1;
+}
+
+.heart-explode {
+  position: absolute;
+  pointer-events: none;
+  z-index: 8;
+}
+
+.heart-explode::after {
+  content: '💥';
+  font-size: 2rem;
+  animation: fadeInScale 0.3s ease forwards, float 0.5s ease forwards;
+}
+
+.game1-feedback {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 15;
+  background: rgba(26, 8, 18, 0.9);
+  border: 1.5px solid var(--pink-primary);
+  border-radius: 20px;
+  padding: 16px 28px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--pink-light);
+  box-shadow: var(--shadow-pink);
+  animation: fadeInScale 0.3s ease;
+  pointer-events: none;
+}
+
+.game1-complete {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 3, 7, 0.95);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  pointer-events: none;
+}
+
+.game1-complete.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.game1-complete-text {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: white;
+  text-align: center;
+  padding: 0 30px;
+  line-height: 1.5;
+}
+
+/* ========================================
+   SCENE – GAME 2 (Drag & Drop)
+   ======================================== */
+#scene-game2 {
+  background: radial-gradient(ellipse at 50% 0%, #3a0a20 0%, #1a0812 100%);
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 50px;
+}
+
+.game2-title {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--pink-light);
+  text-align: center;
+  margin-bottom: 6px;
+  padding-top: 6px;
+}
+
+.game2-subtitle {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.game2-drop-zone {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 0 12px;
+  margin-bottom: 24px;
+}
+
+.year-box {
+  flex: 1;
+  aspect-ratio: 3/4;
+  max-width: 110px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 8px;
+  background: rgba(255, 107, 157, 0.04);
+  border: 2px dashed rgba(255, 107, 157, 0.3);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.year-box.drag-over {
+  border-color: var(--pink-primary);
+  background: rgba(255, 107, 157, 0.1);
+  box-shadow: var(--shadow-pink);
+}
+
+.year-box.correct {
+  border-color: var(--pink-primary);
+  border-style: solid;
+  box-shadow: 0 0 20px rgba(255, 107, 157, 0.4);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.year-box .year-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--pink-light);
+  background: rgba(26, 8, 18, 0.7);
+  padding: 4px 10px;
+  border-radius: 8px;
+  z-index: 1;
+}
+
+.year-box .placed-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.game2-cards {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 20px;
+}
+
+.memory-card {
+  width: 90px;
+  aspect-ratio: 3/4;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #2a1520;
+  border: 2px solid rgba(255, 107, 157, 0.2);
+  position: relative;
+  cursor: grab;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  touch-action: none;
+}
+
+.memory-card:active,
+.memory-card.dragging {
+  cursor: grabbing;
+  transform: scale(1.08) rotate(3deg);
+  box-shadow: 0 8px 30px rgba(255, 107, 157, 0.4);
+  z-index: 100;
+}
+
+.memory-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.memory-card .card-year-hint {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  height: 40%;
+}
+
+.game2-wrong-msg {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(26, 8, 18, 0.9);
+  border: 1px solid var(--pink-primary);
+  border-radius: 16px;
+  padding: 10px 20px;
+  color: var(--pink-light);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+/* ========================================
+   MOMEN SPESIAL – 2026
+   ======================================== */
+#scene-2026 {
+  background: radial-gradient(ellipse at center, #200a14 0%, #0d0508 100%);
+}
+
+.frames-container {
+  display: flex;
+  gap: 8px;
+  padding: 0 12px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.year-frame {
+  flex: 1;
+  aspect-ratio: 3/4;
+  max-width: 95px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 107, 157, 0.3);
+  position: relative;
+  background: #1a0812;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.year-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.year-frame .frame-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+  padding: 10px 6px 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--pink-light);
+  text-align: center;
+}
+
+.year-frame.frame-2026 {
+  border-color: var(--pink-primary);
+  border-style: dashed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 107, 157, 0.05);
+  position: relative;
+}
+
+.year-frame.frame-2026 .sparkle-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.sparkle {
+  position: absolute;
+  font-size: 1rem;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.moment-text {
+  position: absolute;
+  bottom: 80px;
+  left: 24px;
+  right: 24px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: white;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.moment-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   SCENE – MAAF
+   ======================================== */
+#scene-maaf {
+  background: #000;
+}
+
+.maaf-title {
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 6px;
+  position: relative;
+  z-index: 2;
+}
+
+.apology-text {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.82rem;
+  white-space: nowrap;
+  pointer-events: none;
+  animation: apologyFall var(--duration) linear var(--delay) both;
+}
+
+.maaf-pray {
+  position: absolute;
+  font-size: 4rem;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+
+/* ========================================
+   SCENE – TALI
+   ======================================== */
+#scene-tali {
+  background: radial-gradient(ellipse at center top, #1a0812 0%, #050205 100%);
+}
+
+.rope-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: grab;
+  position: relative;
+  z-index: 5;
+}
+
+.rope-svg {
+  animation: ropeSwing 2s ease-in-out infinite;
+  transform-origin: top center;
+  filter: drop-shadow(0 4px 12px rgba(255, 107, 157, 0.2));
+}
+
+.rope-container:active {
+  cursor: grabbing;
+}
+
+.tali-text {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Curtain reveal */
+.curtain {
+  position: absolute;
+  inset: 0;
+  background: #050205;
+  transform-origin: top;
+  z-index: 20;
+  clip-path: inset(0 0 0 0);
+}
+
+/* ========================================
+   SCENE – LEDAKAN FOTO
+   ======================================== */
+#scene-photos {
+  background: linear-gradient(135deg, #2a1015 0%, #1a0a0a 50%, #260d0d 100%);
+  overflow: hidden;
+}
+
+.photo-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 30%, rgba(5, 0, 0, 0.7) 100%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.falling-photo {
+  position: absolute;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  --rot: 0deg;
+  --rot-end: 10deg;
+  --roty: 0deg;
+  --roty-end: 20deg;
+  perspective: 600px;
+}
+
+.falling-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.photos-text {
+  position: absolute;
+  bottom: 140px;
+  left: 24px;
+  right: 24px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: white;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.8);
+  z-index: 15;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.photos-text.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========================================
+   SCENE – SURAT (Finale)
+   ======================================== */
+#scene-letter {
+  background: rgba(10, 5, 8, 0.95);
+  overflow: hidden;
+}
+
+.letter-bg-collage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+  opacity: 0.12;
+  filter: blur(3px);
+  transform: scale(1.05);
+}
+
+.letter-bg-collage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.letter-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(10, 5, 8, 0.75);
+}
+
+.envelope-scene {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.envelope-title {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--pink-light);
+  text-align: center;
+}
+
+.envelope-wrapper {
+  width: 160px;
+  height: 120px;
+  position: relative;
+  cursor: pointer;
+  animation: envelopePop 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  perspective: 600px;
+}
+
+.envelope-body {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #E8A4C8, #D4749C);
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(199, 59, 107, 0.4);
+}
+
+.envelope-flap {
+  width: 100%;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, #F5B8D5, #E8A4C8);
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
+  border-radius: 8px 8px 0 0;
+  transform-origin: top;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.envelope-body.opened .envelope-flap {
+  transform: rotateX(-160deg);
+}
+
+.envelope-seal {
+  position: absolute;
+  top: 35px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, var(--pink-dark), var(--pink-primary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  box-shadow: 0 2px 8px rgba(199, 59, 107, 0.5);
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.envelope-body.opened .envelope-seal {
+  opacity: 0;
+}
+
+.envelope-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  text-align: center;
+}
+
+/* Letter content */
+.letter-content {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+  background: rgba(10, 5, 8, 0.95);
+}
+
+.letter-content.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.letter-paper {
+  flex: 1;
+  overflow-y: auto;
+  margin: 20px;
+  background: linear-gradient(135deg, #fff8f5, #fff0ee);
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 8px 40px rgba(199, 59, 107, 0.25);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.letter-paper::-webkit-scrollbar {
+  display: none;
+}
+
+.letter-text {
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: #4a2030;
+  line-height: 1.85;
+  white-space: pre-wrap;
+}
+
+.letter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--pink-primary);
+  animation: blink 0.8s ease infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes blink {
+
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.letter-actions {
+  padding: 16px 20px 24px;
+  flex-shrink: 0;
+}
+
+/* ========================================
+   SHARED BUTTONS
+   ======================================== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--pink-primary), var(--pink-dark));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  padding: 16px 40px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 24px rgba(199, 59, 107, 0.45);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: 0.03em;
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-primary:active {
+  transform: scale(0.96);
+  box-shadow: 0 2px 12px rgba(199, 59, 107, 0.4);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--pink-primary);
+  border: 1.5px solid var(--pink-primary);
+  border-radius: 50px;
+  padding: 14px 36px;
+  font-size: 0.95rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-secondary:active {
+  background: rgba(255, 107, 157, 0.1);
+}
+
+/* ========================================
+   REDIRECT OVERLAY
+   ======================================== */
+.redirect-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 5, 8, 0.97);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  gap: 20px;
+}
+
+.redirect-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.redirect-text {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: white;
+  text-align: center;
+  padding: 0 30px;
+}
+
+.redirect-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255, 107, 157, 0.2);
+  border-top-color: var(--pink-primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Particle for game */
+.particle-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--pink-primary);
+  pointer-events: none;
+  animation: particleExplode 0.6s ease forwards;
+}
+
+/* ========================================
+   UTILITY
+   ======================================== */
+.hidden {
+  display: none !important;
+}
+
+.invisible {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Fade transition helper */
+.fade-in {
+  animation: slideInUp 0.6s ease both;
+}
+
+/* Staggered children */
+.stagger-children>* {
+  animation: slideInUp 0.5s ease both;
+}
+
+.stagger-children>*:nth-child(1) {
+  animation-delay: 0.1s;
+}
+
+.stagger-children>*:nth-child(2) {
+  animation-delay: 0.25s;
+}
+
+.stagger-children>*:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.stagger-children>*:nth-child(4) {
+  animation-delay: 0.55s;
+}
+
+/* Platform centering */
+@media (min-width: 430px) {
+  body {
+    background: #0a0308;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #app {
+    height: 100vh;
+    max-height: 932px;
+    box-shadow: 0 0 60px rgba(255, 107, 157, 0.15);
+  }
+}
